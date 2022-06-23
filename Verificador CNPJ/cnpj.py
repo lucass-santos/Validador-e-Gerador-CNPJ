@@ -42,10 +42,14 @@ def valida_cnpj(string):
     resultado = True if novo_cnpj == cnpj else False
     return resultado, novo_cnpj
 
+def mascara_cnpj(string):
+    cnpj =f'{string[:2]}.{string[2:5]}.{string[5:8]}/{string[8:12]}-{string[12:14]}'
+    return cnpj
+
 def gera_cnpj():
     primeiro = randint(00, 99)
     segundo = randint(100, 999)
     terceiro = randint(100, 999)
     cnpj = f'{primeiro}.{segundo}.{terceiro}/0001-00'
     _, cnpj = valida_cnpj(cnpj)
-    return cnpj
+    return mascara_cnpj(cnpj)
